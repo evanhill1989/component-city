@@ -15,7 +15,7 @@ export default function BadgeExamples() {
   ];
 
   return (
-    <div className="badges-pill grid grid-cols-8 gap-2 p-3">
+    <div className="badges-pill grid grid-cols-8 gap-2 ">
       {colorArray.map((color) => (
         <div key={color} className={clsx("badge rounded-lg", color)}>
           {badge}
