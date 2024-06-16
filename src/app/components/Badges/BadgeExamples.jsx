@@ -15,18 +15,21 @@ export default function BadgeExamples() {
   ];
 
   return (
-    <div className="badges-pill grid grid-cols-8 gap-2 ">
-      {colorArray.map((color) => (
-        <div key={color} className={clsx("badge rounded-lg", color)}>
-          {badge}
-        </div>
-      ))}
+    <div>
+      <h4 className="subsection--title">BadgeVariants</h4>
+      <div className="badges-pill grid grid-cols-8 gap-2 ">
+        {colorArray.map((color) => (
+          <div key={color} className={clsx("badge rounded-lg", color)}>
+            {badge}
+          </div>
+        ))}
 
-      {colorArray.map((color) => (
-        <div key={color} className={clsx("badge badge-square", color)}>
-          {badge}
-        </div>
-      ))}
+        {colorArray.map((color) => (
+          <div key={color} className={clsx("badge badge-square", color)}>
+            {badge}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
