@@ -47,6 +47,7 @@
   font-size: 0.9375rem;
   min-width: 40px;
   width: 100px;
+  border-radius: 0%;
 }
 
 .subsection--title {
