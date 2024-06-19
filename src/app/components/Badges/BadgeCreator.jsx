@@ -11,6 +11,7 @@ import { useState } from "react";
 import Badge from "./Badge";
 import AdvancedBadge from "./AdvancedBadge";
 import clsx from "clsx";
+import BadgeInputForm from "./BadgeInputForm";
 export default function BadgeCreator() {
   const [badgeStyles, setBadgeStyles] = useState({
     color: "gray",
@@ -18,15 +19,48 @@ export default function BadgeCreator() {
   });
   const [advancedTabIsOpen, setAdvancedTabIsOpen] = useState(false);
   const [advancedBadgeStyles, setAdvancedBadgeStyles] = useState({
-    color: "",
-    backgroundColor: "bg-slate-100",
+    color: "#e2d212",
+    backgroundColor: "white",
     fontWeight: "",
-    fontSizeBoy: "",
-    paddingInline: "",
-    paddingBlock: "",
-    borderStyle: "",
-    borderRadius: "",
+    fontSize: "1rem",
+    paddingInline: "2px",
+    paddingBlock: "12px",
+
+    borderRadius: "5px",
   });
+  /*   The default styles render correctly on load.
+When I reset these badge styles with my form only borderRadius
+and fontWeight seem to react predictably.
+However when I type in the exact existing default values above and 
+submit the form ALL correct values persist to the new render.
+If I only change borderRadius to rounded-lg, but type in all the rest
+exactly as default it rerenders with the correct new borderRadius, and
+all the other values persist correctly.
+If I then only change fontWeight, everything re-renders correctly again.
+If I then change only text color, everything re-renders correctly again.
+If I then change fontSize, nothing happens, but it doesn't break everything.
+If I then change backgroundColor to bg-slate-800 , the backgroundColor goes away
+entirely.
+I can change paddingBlock to px-2 , reset it back to px-4, but anything else 
+returns undefined i guess...
+
+
+Fuck , so I guess the issue is tailwind?
+
+Wow, so this is some wild shit -- the only things i can change it to are values
+that i guess my browser has previously cached.And this is true across the whole app --
+so if the tailwind value has been used anywhere at any level in any component then the 
+browser has cached it and that value can be inputted into the form and dynamically render an
+effect to the UI
+ANd it's not the Browser cache!?!?! I emptied everything out of Firefox, and haven't been using
+it for this at all anyway, and it's the exact same behavior, and it remember the exact same 
+tailwind classes that had been used by the other browser. The only tailwind styles that worked
+are styles that have, at SOME/ANY point been rendered previously from this project's code.
+
+
+
+If I put a dynamic stylesheet directly in my component ...
+ */
 
   function handleColorChange(event) {
     setBadgeStyles((prevStyles) => ({
@@ -53,12 +87,45 @@ export default function BadgeCreator() {
   function handleAdvancedChange(event) {
     const name = event.target.id;
     const value = event.target.value;
-    console.log("styles inside handleAdvancedChange", advancedBadgeStyles);
+    // console.log(name, value, "name and value");
+    // console.log("styles inside handleAdvancedChange", advancedBadgeStyles);
 
-    setAdvancedBadgeStyles((prevStyles) => ({
-      ...prevStyles,
-      [name]: value,
-    }));
+    // setAdvancedBadgeStyles((prevStyles) => ({
+    //   ...prevStyles,
+    //   [name]: value,
+    // }));
+  }
+
+  function handleAdvancedBadgeSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    console.log(formData);
+    const color = formData.get("color");
+    const backgroundColor = formData.get("backgroundColor");
+    const fontWeight = formData.get("fontWeight");
+    const fontSize = formData.get("fontSize");
+    const paddingInline = formData.get("paddingInline");
+    const paddingBlock = formData.get("paddingBlock");
+
+    const borderRadius = formData.get("borderRadius");
+    console.log(
+      color,
+      backgroundColor,
+      fontWeight,
+      fontSize,
+      paddingInline,
+      paddingBlock,
+      borderRadius
+    );
+    setAdvancedBadgeStyles({
+      color,
+      backgroundColor,
+      fontWeight,
+      fontSize,
+      paddingInline,
+      paddingBlock,
+      borderRadius,
+    });
   }
 
   return (
@@ -71,7 +138,7 @@ export default function BadgeCreator() {
           Basic
         </h4>
         <h4
-          className="subsection--title bg-emerald-200 px-2 pt-1 cursor-pointer font-semibold"
+          className="subsection--title bg-emerald-200 px-28 pt-1 cursor-pointer font-semibold"
           onClick={() => toggleAdvancedOptions("advanced")}
         >
           Advanced
@@ -79,118 +146,26 @@ export default function BadgeCreator() {
       </div>
       {advancedTabIsOpen ? (
         <div className="badge-creator--advanced  bg-emerald-200">
-          <div className="badge-creator-inputs p-6 grid grid-flow-row grid-cols-2 gap-4 text-sm">
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Border Radius
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="borderRadius"
-                id="borderRadius"
-                placeholder="rounded-none"
-              />
-            </label>
-
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Padding Inline
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="paddingInline"
-                id="paddingInline"
-                placeholder="py-1"
-              />
-            </label>
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Padding Block
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="paddingBlock"
-                id="paddingBlock"
-                placeholder="px-4"
-              />
-            </label>
-
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Text Color
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="backgroundColor"
-                id="backgroundColor"
-                placeholder="text-black"
-              />
-            </label>
-
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Background Color
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="backgroundColor"
-                id="backgroundColor"
-                placeholder="bg-slate-100"
-              />
-            </label>
-
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Font Weight
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="fontWeight"
-                id="fontWeight"
-                placeholder="font-medium"
-              />
-            </label>
-
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Font Size
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="fontSizeBoy"
-                id="fontSizeBoy"
-                placeholder="text-base"
-              />
-            </label>
-
-            <label className="flex gap-3 font-medium" htmlFor="">
-              Border Style
-              <input
-                type="text"
-                className="px-2 font-normal"
-                onChange={handleAdvancedChange}
-                name="borderStyle"
-                id="borderStyle"
-                placeholder="none"
-              />
-            </label>
-          </div>
+          <BadgeInputForm
+            handleAdvancedChange={handleAdvancedChange}
+            handleAdvancedBadgeSubmit={handleAdvancedBadgeSubmit}
+          />
           <div className="m-auto w-full bg-emerald-200 p-10">
-            {/* advancedBadgeStyles.fontWeight,
-                advancedBadgeStyles.fontSizeBoy,
-                advancedBadgeStyles.paddingInline,
-                advancedBadgeStyles.paddingBlock,
-                advancedBadgeStyles.borderStyle,
-                advancedBadgeStyles.borderRadius, */}
-            <div
+            <AdvancedBadge advancedBadgeStyles={advancedBadgeStyles} />
+            {/* <div
               className={`
              ${advancedBadgeStyles.backgroundColor}
-             
+             ${advancedBadgeStyles.fontWeight}
+              ${advancedBadgeStyles.paddingInline}
+                ${advancedBadgeStyles.paddingBlock}
+                ${advancedBadgeStyles.borderStyle}
+                ${advancedBadgeStyles.borderRadius}
+                ${advancedBadgeStyles.fontSize}
+                 ${advancedBadgeStyles.color}
                 `}
             >
               Badge
-            </div>
-            {/* <AdvancedBadge advancedBadgeStyles={advancedBadgeStyles} /> */}
+            </div> */}
           </div>
         </div>
       ) : (

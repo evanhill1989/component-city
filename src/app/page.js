@@ -19,7 +19,7 @@ export default function Home() {
           </BadgeCreator>
         </Section>
         <Section>
-          <h3 className="text-xl font-semibold">Banner Way</h3>
+          <h3 className="text-xl px-52 font-semibold">Banner Way</h3>
           <BannerExamples />
           <BannerCreator>
             <Banner />

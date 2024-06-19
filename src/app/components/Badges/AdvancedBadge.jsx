@@ -1,31 +1,37 @@
 import clsx from "clsx";
 
-export default function AdvancedBadge({ advancedBadgeStyles }) {
+export default function AdvancedBadge({
+  advancedBadgeStyles = {
+    color: "#e2d212",
+    backgroundColor: "white",
+    fontWeight: "",
+    fontSize: "1rem",
+    paddingInline: "2px",
+    paddingBlock: "12px",
+    borderRadius: "5px",
+  },
+}) {
   const {
     color,
     backgroundColor,
     fontWeight,
-    fontSizeBoy,
+    fontSize,
     paddingInline,
     paddingBlock,
-    borderStyle,
     borderRadius,
   } = advancedBadgeStyles;
 
+  const styleObject = {
+    color: color,
+    backgroundColor: backgroundColor,
+    fontWeight: fontWeight,
+    fontSize: fontSize,
+    padding: `${paddingInline} ${paddingBlock}`,
+    borderRadius: borderRadius,
+  };
+
   return (
-    <div
-      className={clsx(
-        color,
-        backgroundColor,
-        fontWeight,
-        fontSizeBoy,
-        paddingInline,
-        paddingBlock,
-        borderStyle,
-        borderRadius,
-        "m-auto w-20 text-center"
-      )}
-    >
+    <div className="m-auto text-center w-20" style={styleObject}>
       Badge
     </div>
   );

@@ -6,7 +6,9 @@ import {
   FaCircleExclamation,
 } from "react-icons/fa6";
 
-export default function Banner({ bannerTypes }) {
+export default function Banner({
+  bannerTypes = { status: "success", isCondensed: false },
+}) {
   const { status, isCondensed } = bannerTypes;
 
   let bannerStyles = {

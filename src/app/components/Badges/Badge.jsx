@@ -1,6 +1,8 @@
 import clsx from "clsx";
 
-export default function Badge({ badgeStyles }) {
+export default function Badge({
+  badgeStyles = { color: "gray", isPillShape: false },
+}) {
   const { color, isPillShape } = badgeStyles;
 
   return (
