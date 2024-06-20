@@ -1,7 +1,8 @@
 import React from "react";
 import Input from "../Input";
+import InputBox from "../InputBox";
 
-export default function GridItemForm({
+export default function GridItemNumberForm({
   handleGridItemSubmit,
   gridItemStyles = { gridItems: "3" },
 }) {
@@ -23,15 +24,6 @@ export default function GridItemForm({
             placeholder=""
           />
         </label>
-        {Array.from({ length: gridItems }, (_, i) => (
-          <div key={i}>
-            <Input
-              labelText={`Grid Item ${i}`}
-              id={`gridItem${i}`}
-              name={`gridItem${i}`}
-            />
-          </div>
-        ))}
 
         <button>Grid Item Submit</button>
       </form>

@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function Grid({
-  gridItemStyles = {
+  gridItemStyles = { alignSelf: "default", justifySelf: "default" },
+  gridItemNumber = {
     gridItems: "3",
   },
   gridStyles = {
@@ -22,9 +23,16 @@ export default function Grid({
     backgroundColor,
   } = gridStyles;
 
-  const { gridItems } = gridItemStyles;
+  const { alignSelf, justifySelf } = gridItemStyles;
 
-  const styleObject = {
+  const { gridItems } = gridItemNumber;
+
+  const gridItemStyleObject = {
+    alignSelf,
+    justifySelf,
+  };
+
+  const gridStyleObject = {
     gridTemplateColumns: gridTemplateColumns,
     gridTemplateRows: gridTemplateRows,
     gridGap: gridGap,
@@ -36,9 +44,9 @@ export default function Grid({
   return (
     <>
       <h5>sandbox</h5>
-      <div className="grid border border-red-400" style={styleObject}>
+      <div className="grid border border-red-400" style={gridStyleObject}>
         {Array.from({ length: gridItems }, (_, i) => (
-          <div key={i}>
+          <div key={i} style={gridItemStyleObject}>
             <p className="bg-slate-400 col-auto row-auto">GridItem</p>
           </div>
         ))}

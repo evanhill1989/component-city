@@ -13,7 +13,7 @@ export default function InputBox({
         {labelText}
         <input
           type="text"
-          className="px-2 font-normal"
+          className="px-2 font-normal bg-slate-100 border border-black"
           onChange={(event) => onChangeFn(event)}
           name={name}
           id={id}
