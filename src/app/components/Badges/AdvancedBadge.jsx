@@ -11,28 +11,25 @@ export default function AdvancedBadge({
     borderRadius: "5px",
   },
 }) {
-  const {
-    color,
-    backgroundColor,
-    fontWeight,
-    fontSize,
-    paddingInline,
-    paddingBlock,
-    borderRadius,
-  } = advancedBadgeStyles;
+  // using inline style with regular css values and passing styleObject to style property because injecting
+  // tailwind dynamically gets wacky AF
 
   const styleObject = {
-    color: color,
-    backgroundColor: backgroundColor,
-    fontWeight: fontWeight,
-    fontSize: fontSize,
-    padding: `${paddingInline} ${paddingBlock}`,
-    borderRadius: borderRadius,
+    color: advancedBadgeStyles.color,
+    backgroundColor: advancedBadgeStyles.backgroundColor,
+    fontWeight: advancedBadgeStyles.fontWeight,
+    fontSize: advancedBadgeStyles.fontSize,
+    padding: `${advancedBadgeStyles.paddingInline} ${advancedBadgeStyles.paddingBlock}`,
+    borderRadius: advancedBadgeStyles.borderRadius,
   };
-
+  console.log(
+    advancedBadgeStyles,
+    "advancedBadgeStyles inside of AdvancedBadge"
+  );
+  console.log(styleObject, "styleObject inside AdvancedBadge");
   return (
     <div className="m-auto text-center w-20" style={styleObject}>
-      Badge
+      Badge !!!
     </div>
   );
 }

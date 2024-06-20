@@ -10,8 +10,9 @@
 import { useState } from "react";
 import Badge from "./Badge";
 import AdvancedBadge from "./AdvancedBadge";
-import clsx from "clsx";
+
 import BadgeInputForm from "./BadgeInputForm";
+
 export default function BadgeCreator() {
   const [badgeStyles, setBadgeStyles] = useState({
     color: "gray",
@@ -87,7 +88,7 @@ If I put a dynamic stylesheet directly in my component ...
   function handleAdvancedChange(event) {
     const name = event.target.id;
     const value = event.target.value;
-    // console.log(name, value, "name and value");
+    console.log(name, value, "name and value");
     // console.log("styles inside handleAdvancedChange", advancedBadgeStyles);
 
     // setAdvancedBadgeStyles((prevStyles) => ({
@@ -146,12 +147,14 @@ If I put a dynamic stylesheet directly in my component ...
       </div>
       {advancedTabIsOpen ? (
         <div className="badge-creator--advanced  bg-emerald-200">
+          <p>Enter regular css values below.</p>
           <BadgeInputForm
             handleAdvancedChange={handleAdvancedChange}
             handleAdvancedBadgeSubmit={handleAdvancedBadgeSubmit}
           />
           <div className="m-auto w-full bg-emerald-200 p-10">
             <AdvancedBadge advancedBadgeStyles={advancedBadgeStyles} />
+
             {/* <div
               className={`
              ${advancedBadgeStyles.backgroundColor}
