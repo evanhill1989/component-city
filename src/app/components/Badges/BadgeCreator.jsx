@@ -12,7 +12,7 @@ import Badge from "./Badge";
 import AdvancedBadge from "./AdvancedBadge";
 import clsx from "clsx";
 import BadgeInputForm from "./BadgeInputForm";
-export default function BadgeCreator() {
+export default function BadgeCreator({ children }) {
   const [badgeStyles, setBadgeStyles] = useState({
     color: "gray",
     isPillShape: false,
@@ -130,6 +130,7 @@ If I put a dynamic stylesheet directly in my component ...
 
   return (
     <div>
+      {children}
       <div className="flex gap-2">
         <h4
           className="subsection--title bg-slate-100 ml-0 px-2 pt-1 cursor-pointer "
@@ -152,20 +153,6 @@ If I put a dynamic stylesheet directly in my component ...
           />
           <div className="m-auto w-full bg-emerald-200 p-10">
             <AdvancedBadge advancedBadgeStyles={advancedBadgeStyles} />
-            {/* <div
-              className={`
-             ${advancedBadgeStyles.backgroundColor}
-             ${advancedBadgeStyles.fontWeight}
-              ${advancedBadgeStyles.paddingInline}
-                ${advancedBadgeStyles.paddingBlock}
-                ${advancedBadgeStyles.borderStyle}
-                ${advancedBadgeStyles.borderRadius}
-                ${advancedBadgeStyles.fontSize}
-                 ${advancedBadgeStyles.color}
-                `}
-            >
-              Badge
-            </div> */}
           </div>
         </div>
       ) : (
