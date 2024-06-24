@@ -1,43 +1,29 @@
-import InputBox from "../InputBox";
-
+"use client";
 import React from "react";
+import { atom, useAtom } from "jotai";
 
-const itemInputs = [
-  {
-    id: "alignSelf",
-    labelText: "Align Self",
-    name: "alignSelf",
-    placeholder: "default",
-  },
-  {
-    id: "justifySelf",
-    labelText: "Justify Self",
-    name: "justifySelf",
-    placeholder: "default",
-  },
-];
+import { gridItemsAtom } from "../../atoms/gridAtoms";
 
 // This probably just needs to accept children so InputBox can
 // go directly in parent environ
-export default function ItemPropertyForm({
-  gridItemNumber,
-  gridItemStyles,
-  handleItemPropOnChange,
-}) {
-  const { gridItems } = gridItemNumber;
+// TODO : I probably need to pass this function as a prop or import from actions repo
+export default function ItemPropertyForm() {
+  const [gridItems, setGridItems] = useAtom(gridItemsAtom);
 
-  const gridItemsArr = [];
-
-  // loop over number of gridItems in state and push human numbers
-  for (let i = 0; i < gridItems; i++) {
-    gridItemsArr.push(i + 1);
+  function handleItemPropOnChange(event) {
+    event.preventDefault();
+    const { name, id, value } = event.target;
+    const updatedItems = gridItems.map((item) =>
+      item.id === parseInt(id) ? { ...item, [name]: value } : item
+    );
+    setGridItems(updatedItems);
   }
 
   return (
     <>
-      {gridItemsArr.map((item) => (
-        <div key={item}>
-          <p>Grid Item {item}</p>
+      {gridItems.map((item) => (
+        <div key={item.id}>
+          <p>Grid Item {item.id}</p>
           <form
             // Left off here, need to try onChangFn first to
             // effect gridItems props
@@ -52,8 +38,8 @@ export default function ItemPropertyForm({
                 className="px-2 font-normal bg-slate-100 border border-black"
                 onChange={(event) => handleItemPropOnChange(event)}
                 name="alignSelf"
-                id={item}
-                placeholder="default"
+                id={item.id.toString()}
+                placeholder={item.alignSelf}
               />
             </label>
             <label className="flex gap-3 font-medium" htmlFor="borderRadius">
@@ -63,20 +49,10 @@ export default function ItemPropertyForm({
                 className="px-2 font-normal bg-slate-100 border border-black"
                 onChange={(event) => handleItemPropOnChange(event)}
                 name="justifySelf"
-                id={item}
+                id={item.id.toString()}
                 placeholder="default"
               />
             </label>
-            {/* {itemInputs.map((item) => (
-              <InputBox
-                key={item.id}
-                labelText={item.labelText}
-                name={item.name}
-                id={item.id}
-                placeholder={item.placeholder}
-                onChangeFn={handleItemPropOnChange}
-              />
-            ))} */}
 
             <button>Submit new styles</button>
           </form>

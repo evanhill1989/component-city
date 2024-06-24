@@ -8,27 +8,37 @@
 "use client";
 
 import { useState } from "react";
+import { atom, useAtom } from "jotai";
+
 import Badge from "./Badge";
 import AdvancedBadge from "./AdvancedBadge";
 
 import BadgeInputForm from "./BadgeInputForm";
-export default function BadgeCreator({ children }) {
-  const [badgeStyles, setBadgeStyles] = useState({
-    color: "gray",
-    isPillShape: false,
-  });
-  const [advancedTabIsOpen, setAdvancedTabIsOpen] = useState(false);
-  const [advancedBadgeStyles, setAdvancedBadgeStyles] = useState({
-    color: "#e2d212",
-    backgroundColor: "white",
-    fontWeight: "",
-    fontSize: "1rem",
-    paddingInline: "2px",
-    paddingBlock: "12px",
+const advancedOpener = atom(false);
+// const badgeStyles = atom({ color: "gray", isPillShape: false });
 
-    borderRadius: "5px",
-  });
-  /*   The default styles render correctly on load.
+const newBadgeStyler = atom({ color: "gray", isPillShape: false });
+const advancedBadgeStyler = atom({
+  color: "#e2d212",
+  backgroundColor: "white",
+  fontWeight: "",
+  fontSize: "1rem",
+  paddingInline: "2px",
+  paddingBlock: "12px",
+
+  borderRadius: "5px",
+});
+
+export default function BadgeCreator({ children }) {
+  // const [badgeStyles, setBadgeStyles] = useState({
+
+  // });
+  const [badgeStyles, setBadgeStyles] = useAtom(newBadgeStyler);
+  // const [ newBadgeStyles, setNewBadgeStyles ] = useAtom(newBadgeStyler)
+  const [advancedTabIsOpen, setAdvancedTabIsOpen] = useAtom(advancedOpener);
+  const [advancedBadgeStyles, setAdvancedBadgeStyles] =
+    useAtom(advancedBadgeStyler);
+  /*  Crazy tailwind Explanation --  The default styles render correctly on load.
 When I reset these badge styles with my form only borderRadius
 and fontWeight seem to react predictably.
 However when I type in the exact existing default values above and 
