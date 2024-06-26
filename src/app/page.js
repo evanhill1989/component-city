@@ -8,10 +8,11 @@ import BannerExamples from "../components/Banner/BannerExamples";
 import BannerCreator from "../components/Banner/BannerCreator";
 
 import GridCreator from "../components/GridTown/GridCreator";
+import Main from "../components/Main";
+
 export default function Home() {
   return (
-    <main className="flex flex-col items-center">
-      <h1 className="text-4xl font-bold">Component City</h1>
+    <Main>
       <div className="wrapper max-w-6xl">
         <Section></Section>
         <Section>
@@ -33,6 +34,6 @@ export default function Home() {
           <GridCreator />
         </Section>
       </div>
-    </main>
+    </Main>
   );
 }

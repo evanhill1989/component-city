@@ -36,7 +36,7 @@ export default function GridCreator({ children }) {
         id: i,
         alignSelf: "default",
         justifySelf: "default",
-        backgroundColor: "gray",
+        backgroundColor: "red",
       });
     }
 

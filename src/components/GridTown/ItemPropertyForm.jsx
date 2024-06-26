@@ -53,6 +53,39 @@ export default function ItemPropertyForm() {
                 placeholder="default"
               />
             </label>
+            <label className="flex gap-3 font-medium" htmlFor="borderRadius">
+              Background Color
+              <input
+                type="text"
+                className="px-2 font-normal bg-slate-100 border border-black"
+                onChange={(event) => handleItemPropOnChange(event)}
+                name="backgroundColor"
+                id={item.id.toString()}
+                placeholder="default"
+              />
+            </label>
+            <label className="flex gap-3 font-medium" htmlFor="borderRadius">
+              Width
+              <input
+                type="text"
+                className="px-2 font-normal bg-slate-100 border border-black"
+                onChange={(event) => handleItemPropOnChange(event)}
+                name="width"
+                id={item.id.toString()}
+                placeholder="default"
+              />
+            </label>
+            <label className="flex gap-3 font-medium" htmlFor="borderRadius">
+              Height
+              <input
+                type="text"
+                className="px-2 font-normal bg-slate-100 border border-black"
+                onChange={(event) => handleItemPropOnChange(event)}
+                name="height"
+                id={item.id.toString()}
+                placeholder="default"
+              />
+            </label>
 
             <button>Submit new styles</button>
           </form>

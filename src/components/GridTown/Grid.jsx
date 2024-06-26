@@ -52,7 +52,7 @@ export default function Grid(
               backgroundColor: item.backgroundColor,
             }}
           >
-            <p className="bg-slate-400 col-auto row-auto">GridItem</p>
+            <p className="col-auto row-auto">GridItem</p>
           </div>
         ))}
       </div>
