@@ -1,7 +1,33 @@
+"use client";
+
 import React from "react";
 import Grid from "./GridTown/Grid";
 
 export default function Main({ children }) {
+  const [gridStyle, setGridStyle] = useAtom(gridStyleAtom);
+
+  //   const gridStyleAtom = atom({
+  //     gridTemplateColumns: "repeat(3, 1fr)",
+  //     gridTemplateRows: "",
+  //     gridGap: "50px",
+  //     justifyItems: "",
+  //     alignItems: "",
+  //     backgroundColor: "",
+  //   });
+
+  function handleItemPropOnChange(event) {
+    event.preventDefault();
+    console.log("Inside Handle ItemProponCHange in GridPropertyForm");
+    console.log(gridStyle, "gridStyle");
+    const { name, id, value } = event.target;
+    console.log(event.target);
+    console.log(name, "Value is ...");
+    // const updatedStyles = gridStyle.map((style) =>
+    //   item.id === parseInt(id) ? { ...style, [name]: value } : style
+    // );
+    setGridStyle((prevGridStyle) => ({ ...prevGridStyle, [name]: value }));
+    console.log(gridStyle, "gridStyle 2");
+  }
   return (
     <main className="grid grid-cols-5 col-gap-5 items-center max-w-7xl m-auto">
       <div className="bg-zinc-900 grid col-span-5 grid-cols-subgrid gap-x-12 p-0 mb-0">
