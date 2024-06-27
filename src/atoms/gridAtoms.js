@@ -1,11 +1,12 @@
 import { atom } from "jotai";
 
 export const gridStyleAtom = atom({
-  gridTemplateColumns: "repeat(3, 1fr)",
-  gridTemplateRows: "",
+  gridTemplateColumns: "repeat(6, 1fr)",
+  gridTemplateRows: "repeat(6, 1fr)",
   gridGap: "",
   justifyItems: "start",
   alignItems: "start",
+  gridAutoFlow: "row",
   backgroundColor: "",
 });
 

@@ -2,7 +2,6 @@
 
 import { atom, useAtom } from "jotai";
 
-import { handleItemPropOnChange } from "../../formActions";
 export default function GridPropertyForm({ handleItemPropOnChange }) {
   //TODO using this in 2 places now in ItemPropertyForm.jsx too
 
@@ -15,7 +14,7 @@ export default function GridPropertyForm({ handleItemPropOnChange }) {
         <div className="input-siblings flex flex-col gap-2">
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Columns
+              Grid Template Columns
             </label>
             <input
               name="gridTemplateColumns"
@@ -26,11 +25,13 @@ export default function GridPropertyForm({ handleItemPropOnChange }) {
           </div>
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Rows
+              Grid Template Rows
             </label>
             <input
               type="text"
               className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="gridTemplateRows"
             />
           </div>
         </div>
@@ -38,80 +39,96 @@ export default function GridPropertyForm({ handleItemPropOnChange }) {
         <div className="input-siblings flex flex-col gap-2">
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Columns
+              Justify Items
             </label>
             <input
               type="text"
               className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="justifyItems"
             />
           </div>
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Rows
+              Align Items
             </label>
             <input
               type="text"
               className="px-2 font-normal w-full bg-slate-200 "
-            />
-          </div>
-        </div>
-        <div className="input-siblings flex flex-col gap-2">
-          <div className="flex gap-3">
-            <label className="font-medium" htmlFor="">
-              Columns
-            </label>
-            <input
-              type="text"
-              className="px-2 font-normal w-full bg-slate-200 "
-            />
-          </div>
-          <div className="flex gap-3">
-            <label className="font-medium" htmlFor="">
-              Rows
-            </label>
-            <input
-              type="text"
-              className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="alignItems"
             />
           </div>
         </div>
         <div className="input-siblings flex flex-col gap-2">
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Columns
+              Justify Content
             </label>
             <input
               type="text"
               className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="justifyContent"
             />
           </div>
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Rows
+              Align Content
             </label>
             <input
               type="text"
               className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="alignContent"
             />
           </div>
         </div>
         <div className="input-siblings flex flex-col gap-2">
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Columns
+              Column Gap
             </label>
             <input
               type="text"
               className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="columnGap"
             />
           </div>
           <div className="flex gap-3">
             <label className="font-medium" htmlFor="">
-              Rows
+              Row Gap
             </label>
             <input
               type="text"
               className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="rowGap"
+            />
+          </div>
+        </div>
+        <div className="input-siblings flex flex-col gap-2">
+          <div className="flex gap-3">
+            <label className="font-medium" htmlFor="">
+              Auto-Flow
+            </label>
+            <input
+              type="text"
+              className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="gridAutoFlow"
+            />
+          </div>
+          <div className="flex gap-3">
+            <label className="font-medium" htmlFor="">
+              Background Color
+            </label>
+            <input
+              type="text"
+              className="px-2 font-normal w-full bg-slate-200 "
+              onChange={(event) => handleItemPropOnChange(event)}
+              name="backgroundColor"
             />
           </div>
         </div>

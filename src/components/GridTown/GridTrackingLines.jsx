@@ -2,12 +2,8 @@
 
 import React from "react";
 import { atom, useAtom } from "jotai";
-import styled from "styled-components";
-import { gridItemsAtom } from "../../atoms/gridAtoms";
 
-export default function Grid({ gridStyle }) {
-  const [gridItems, setGridItems] = useAtom(gridItemsAtom);
-
+export default function GridTrackingLines({ gridStyle, columns, rows }) {
   const {
     gridTemplateColumns,
     gridTemplateRows,
@@ -28,22 +24,34 @@ export default function Grid({ gridStyle }) {
     backgroundColor: backgroundColor,
   };
 
+  const gridTrackNumber = columns * rows;
+
+  const gridTrackItems = [];
+
+  for (let i = 0; i <= gridTrackNumber; i++) {
+    gridTrackItems.push({
+      id: i,
+    });
+  }
+
   return (
     <div
-      className="grid border h-full w-full border-red-400"
+      className="grid border h-full w-full border-green-500 justify-items-stretch "
       style={gridStyleObject}
     >
-      {gridItems.map((item) => (
+      {gridTrackItems.map((item) => (
         <>
           <div
-            className="border-solid border-orange-500 border-2"
+            className="border-dotted h-full w-full border-pink-600-500 border-2 bg-gray-600"
             key={item.id}
             style={{
-              justifySelf: item.justifySelf,
-              backgroundColor: item.backgroundColor,
+              gridColumn: "span 1",
+              gridRow: "span 1",
+              height: "100%",
+              width: "100%",
             }}
           >
-            <p className="col-auto row-auto">GridItem</p>
+            <p className="col-auto row-auto">GridTrackBlock</p>
           </div>
           <div className=""></div>
         </>
