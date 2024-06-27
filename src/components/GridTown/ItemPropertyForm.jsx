@@ -7,17 +7,10 @@ import { gridItemsAtom } from "../../atoms/gridAtoms";
 // This probably just needs to accept children so InputBox can
 // go directly in parent environ
 // TODO : I probably need to pass this function as a prop or import from actions repo
-export default function ItemPropertyForm() {
+export default function ItemPropertyForm({ handleItemPropOnChange }) {
   const [gridItems, setGridItems] = useAtom(gridItemsAtom);
 
-  function handleItemPropOnChange(event) {
-    event.preventDefault();
-    const { name, id, value } = event.target;
-    const updatedItems = gridItems.map((item) =>
-      item.id === parseInt(id) ? { ...item, [name]: value } : item
-    );
-    setGridItems(updatedItems);
-  }
+  //TODO using this in 2 places now in ItemPropertyForm.jsx too
 
   return (
     <>
@@ -36,7 +29,7 @@ export default function ItemPropertyForm() {
               <input
                 type="text"
                 className="px-2 font-normal bg-slate-100 border border-black"
-                onChange={(event) => handleItemPropOnChange(event)}
+                onChange={(event) => handleItemPropOnChange(event, gridItems)}
                 name="alignSelf"
                 id={item.id.toString()}
                 placeholder={item.alignSelf}
