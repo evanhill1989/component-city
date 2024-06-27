@@ -42,19 +42,24 @@ export default function Grid(
 
   return (
     <>
-      <h5>sandbox</h5>
-      <div className="grid border border-red-400" style={gridStyleObject}>
-        {gridItems.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              justifySelf: item.justifySelf,
-              backgroundColor: item.backgroundColor,
-            }}
-          >
-            <p className="col-auto row-auto">GridItem</p>
-          </div>
-        ))}
+      <div className="h-full w-full grid-container">
+        <div
+          className="grid border h-full w-full border-red-400"
+          style={gridStyleObject}
+        >
+          {gridItems.map((item) => (
+            <div
+              className="border-solid border-orange-500 border-2"
+              key={item.id}
+              style={{
+                justifySelf: item.justifySelf,
+                backgroundColor: item.backgroundColor,
+              }}
+            >
+              <p className="col-auto row-auto">GridItem</p>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

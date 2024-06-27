@@ -3,9 +3,9 @@ import { atom } from "jotai";
 export const gridStyleAtom = atom({
   gridTemplateColumns: "repeat(3, 1fr)",
   gridTemplateRows: "",
-  gridGap: "50px",
-  justifyItems: "",
-  alignItems: "",
+  gridGap: "",
+  justifyItems: "start",
+  alignItems: "start",
   backgroundColor: "",
 });
 
@@ -20,8 +20,8 @@ export const gridItemsAtom = atom([
   },
   {
     id: 1,
-    alignSelf: "center",
-    justifySelf: "center",
+    alignSelf: "default",
+    justifySelf: "default",
     backgroundColor: "#eb4034",
   },
   {

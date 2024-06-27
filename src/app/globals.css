@@ -53,3 +53,25 @@
 .subsection--title {
   border-radius: 10px 10px 0 0;
 }
+
+.grid-container {
+  position: relative;
+}
+
+.grid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0.5) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 0, 0, 0.5) 1px, transparent 1px);
+  background-size: calc(100% / 3) 100%, 100% calc(100% / 3);
+  pointer-events: none;
+  z-index: 1;
+}
