@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Providers } from "../components/providers";
+import { JotaiProviders } from "../components/providers";
 import Provider from "jotai";
 import ScrollNav from "../components/ScrollNav";
 
@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} relative`}>
+        <Header />
         <ScrollNav />
-        <Header></Header>
-        <Providers>{children}</Providers>
+        <JotaiProviders>{children}</JotaiProviders>
       </body>
     </html>
   );

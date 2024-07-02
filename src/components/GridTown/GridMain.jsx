@@ -49,7 +49,7 @@ function GridMain({ children }) {
 
   return (
     <>
-      <div className="bg-zinc-900 grid col-span-5 grid-cols-subgrid gap-x-12 p-0 mb-0">
+      <div className=" bg-zinc-900 grid col-span-5 grid-cols-subgrid gap-x-12 p-0 mb-0">
         <h2 className="text-white table-cell text-4xl align-text-bottom italic  col-start-2 col-end-3 self-end pt-5 mb-[-7px] font-thin">
           Grid
         </h2>

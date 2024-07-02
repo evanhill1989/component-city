@@ -2,6 +2,6 @@
 
 import { Provider } from "jotai";
 
-export const Providers = ({ children }) => {
+export const JotaiProviders = ({ children }) => {
   return <Provider>{children}</Provider>;
 };

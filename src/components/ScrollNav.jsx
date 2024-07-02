@@ -2,7 +2,7 @@ import React from "react";
 
 function ScrollNav() {
   return (
-    <div className="fixed w-6 h-[100vh] border-2 border-pink-600 right-[20%] grid grid-flow-row text-white items-center justify-center p-4">
+    <div className="fixed z-50 w-6 h-[100vh] border-2 border-pink-600 right-[20%] grid grid-flow-row text-white items-center justify-center p-4">
       <div className="gray w-full p-4 h-full flex items-center bg-slate-800 border-white border-2">
         <p>Grid</p>
       </div>
