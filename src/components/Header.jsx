@@ -1,9 +1,12 @@
 import React from "react";
+import Nav from "./Header/Nav";
+import Logo from "./Header/Logo";
 
 export default function Header() {
   return (
-    <div className="grid place-items-center font-black w-full text-2xl p-16 border-2 border-red-500 border-solid md:text-5xl">
-      <h1 className="grid ">ComponentCity</h1>
+    <div className="grid grid-cols-2 z-50 absolute font-black text-2xl border-2 border-red-500 border-solid md:text-5xl">
+      <Logo />
+      <Nav />
     </div>
   );
 }

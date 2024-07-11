@@ -1,16 +1,6 @@
 "use client";
-import React, { useContext, useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { atom, useAtom } from "jotai";
-
-import Grid from "./GridTown/Grid";
-import GridTrackingLines from "./GridTown/GridTrackingLines";
-import GridPropertyForm from "./GridTown/GridPropertyForm";
-
-import { gridStyleAtom } from "../atoms/gridAtoms";
-
-import gsap from "gsap";
-import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-import { useGSAP } from "@gsap/react";
 
 import GridMain from "./GridTown/GridMain";
 import CardMain from "./Card/CardMain";
@@ -20,8 +10,17 @@ import HeaderMain from "./Header/HeaderMain";
 import NavigationMain from "./Navigation/NavigationMain";
 import TestimonialMain from "./Testimonial/TestimonialMain";
 import ToastMain from "./Toast/ToastMain";
+import ScrollNav from "./ScrollNav";
 
-// Register the plugins
+import Section from "./#UI/Section";
+import SectionHeader from "./#UI/SectionHeader";
+
+import { gridStyleAtom } from "../atoms/gridAtoms";
+
+import gsap from "gsap";
+import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+import { useGSAP } from "@gsap/react";
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Main({ children }) {
@@ -42,12 +41,6 @@ export default function Main({ children }) {
 
       const rowString = window.getComputedStyle(gridElement).gridTemplateRows;
       const rowCount = rowString.trim().split(/\s+/).length;
-      console.log(
-        columnCount,
-        rowCount,
-        "Column count and RowCount in useEffect!"
-      );
-      console.log("useEffect running !!!!");
       setGridDimensions({ columnCount, rowCount });
     }
   }, [gridStyle]);
@@ -62,6 +55,7 @@ export default function Main({ children }) {
 
   const scrollTween = useRef();
   const snapTriggers = useRef([]);
+  const scrollNavItems = useRef([]);
   const { contextSafe } = useGSAP(
     () => {
       let panels = gsap.utils.toArray(".panel"),
@@ -94,16 +88,45 @@ export default function Main({ children }) {
       });
 
       ScrollTrigger.refresh();
+
+      panels.forEach((panel, i) => {
+        gsap.to(scrollNavItems.current[i], {
+          scrollTrigger: {
+            trigger: panel,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => {
+              gsap.to(scrollNavItems.current[i], {
+                fontWeight: "bold",
+              });
+            },
+            onLeave: () => {
+              gsap.to(scrollNavItems.current[i], {
+                fontWeight: "500",
+              });
+            },
+            onEnterBack: () => {
+              gsap.to(scrollNavItems.current[i], {
+                fontWeight: "bold",
+              });
+            },
+            onLeaveBack: () => {
+              gsap.to(scrollNavItems.current[i], {
+                fontWeight: "500",
+              });
+            },
+          },
+        });
+      });
     },
     {
-      dependencies: [],
+      dependencies: null,
       scope: main,
       revertOnUpdate: true,
     }
   );
 
   const goToSection = contextSafe((i) => {
-    console.log("scroll to", i, snapTriggers.current[i].start);
     scrollTween.current = gsap.to(window, {
       scrollTo: { y: snapTriggers.current[i].start, autoKill: false },
       duration: 1,
@@ -114,9 +137,12 @@ export default function Main({ children }) {
 
   return (
     <main ref={main} className="">
-      <section className="panel gray">
+      <ScrollNav ref={scrollNavItems} />
+      <Section>
+        <SectionHeader>grid</SectionHeader>
         <GridMain />
-      </section>
+      </Section>
+
       <section className="panel red">Card</section>
       <section className="panel yellow">Banner</section>
       <section className="panel green">Badge</section>

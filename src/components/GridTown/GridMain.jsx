@@ -49,11 +49,6 @@ function GridMain({ children }) {
 
   return (
     <>
-      <div className=" bg-zinc-900 grid col-span-5 grid-cols-subgrid gap-x-12 p-0 mb-0">
-        <h2 className="text-white table-cell text-4xl align-text-bottom italic  col-start-2 col-end-3 self-end pt-5 mb-[-7px] font-thin">
-          Grid
-        </h2>
-      </div>
       <div className="component grid grid-cols-subgrid col-span-5 max-w-5xl gap-x-12 md:grid-rows-[100px_1fr_100px]">
         <div className="input-aside grid col-start-1 col-end-2 grid-cols-subgrid md:row-start-2 md:row-end-3 p-6 text-sm ">
           <GridPropertyForm handleItemPropOnChange={handleItemPropOnChange} />
