@@ -10,7 +10,7 @@ import HeaderMain from "./Header/HeaderMain";
 import NavigationMain from "./Navigation/NavigationMain";
 import TestimonialMain from "./Testimonial/TestimonialMain";
 import ToastMain from "./Toast/ToastMain";
-import ScrollNav from "./ScrollNav";
+// import ScrollNav from "./ScrollNav";
 
 import Section from "./#UI/Section";
 import SectionHeader from "./#UI/SectionHeader";
@@ -137,7 +137,7 @@ export default function Main({ children }) {
 
   return (
     <main ref={main} className="">
-      <ScrollNav ref={scrollNavItems} />
+      {/* <ScrollNav ref={scrollNavItems} /> */}
       <Section>
         <SectionHeader>grid</SectionHeader>
         <GridMain />

@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { JotaiProviders } from "../components/providers";
 import Provider from "jotai";
@@ -6,7 +6,10 @@ import ScrollNav from "../components/ScrollNav";
 
 import Header from "../components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const ibm = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+});
 
 export const metadata = {
   title: "ComponentCity",
@@ -16,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} relative`}>
+      <body className={`${ibm.className} relative`}>
         <Header />
 
         <JotaiProviders>{children}</JotaiProviders>
