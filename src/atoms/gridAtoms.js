@@ -3,7 +3,8 @@ import { atom } from "jotai";
 export const gridStyleAtom = atom({
   gridTemplateColumns: "repeat(3, 1fr)",
   gridTemplateRows: "repeat(3, 1fr)",
-  gridGap: "",
+  columnGap: "30px",
+  rowGap: "10px",
   justifyItems: "start",
   alignItems: "start",
   gridAutoFlow: "row",

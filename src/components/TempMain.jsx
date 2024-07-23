@@ -3,15 +3,12 @@
 import React, { useEffect, useState } from "react";
 
 import Hero from "./UI/Hero";
-import GridTemp from "./GridTown/Grid";
+import GridTemp from "./GridTemp";
+import GridTempPropertyForm from "./GridTempPropertyForm";
 
 import { atom, useAtom } from "jotai";
 
-import { gridStyleAtom } from "../atoms/gridAtoms";
-
 function TempMain() {
-  const [gridStyle, setGridStyle] = useAtom(gridStyleAtom);
-
   //  Handles collecting gridStyle data after main Grid renders.
   //   I can't remember why I couldn't take it directly from gridStyle?
   // I recall that somehow the timing was always off, like
@@ -33,81 +30,12 @@ function TempMain() {
     <main>
       <Hero />
       {/* GRID INPUT SECTION */}
-      <div className="input-container h-[250px] grid grid-cols-1 grid-rows-[2rem, 1fr]">
-        <div className="input-tabs grid grid-cols-2">
-          <div className="bg-slate-100 p-2">
-            <h4>Container Settings</h4>
-          </div>
-          <div className="bg-slate-400 p-2">
-            <h4>Item Settings</h4>
-          </div>
-        </div>
+      <GridTempPropertyForm />
 
-        <form
-          className="inputs chartreuse p-6 grid grid-rows-5 gap-8"
-          action=""
-        >
-          <div className="input-box flex ">
-            <label className="font-medium" htmlFor="">
-              Grid Template Columns
-            </label>
-            <input
-              name="gridTemplateColumns"
-              type="text"
-              className="px-2 font-normal w-full bg-slate-200 "
-              //   onChange={(event) => handleItemPropOnChange(event)}
-            />
-          </div>
-          <div className="input-box flex ">
-            <label className="font-medium" htmlFor="">
-              Grid Template Columns
-            </label>
-            <input
-              name="gridTemplateColumns"
-              type="text"
-              className="px-2 font-normal w-full bg-slate-200 "
-              //   onChange={(event) => handleItemPropOnChange(event)}
-            />
-          </div>
-          <div className="input-box flex ">
-            <label className="font-medium" htmlFor="">
-              Grid Template Columns
-            </label>
-            <input
-              name="gridTemplateColumns"
-              type="text"
-              className="px-2 font-normal w-full bg-slate-200 "
-              //   onChange={(event) => handleItemPropOnChange(event)}
-            />
-          </div>
-          <div className="input-box flex ">
-            <label className="font-medium" htmlFor="">
-              Grid Template Columns
-            </label>
-            <input
-              name="gridTemplateColumns"
-              type="text"
-              className="px-2 font-normal w-full bg-slate-200 "
-              //   onChange={(event) => handleItemPropOnChange(event)}
-            />
-          </div>
-          <div className="input-box flex ">
-            <label className="font-medium" htmlFor="">
-              Grid Template Columns
-            </label>
-            <input
-              name="gridTemplateColumns"
-              type="text"
-              className="px-2 font-normal w-full bg-slate-200 "
-              //   onChange={(event) => handleItemPropOnChange(event)}
-            />
-          </div>
-        </form>
-      </div>
       {/*END GRID INPUT SECTION */}
       {/* ACTUAL GRID */}
       <div className="rendered-grid-container w-full h-[35vh] bg-slate-300 p-3">
-        <GridTemp gridStyle={gridStyle} />
+        <GridTemp />
         {/* <div className="rendered-grid border border-pink-500 border-dashed h-full w-full grid grid-cols-3 grid-rows-3">
           <div className="border border-pink-500 border-dashed"></div>
           <div className="rendered-grid border border-pink-500 border-dashed"></div>

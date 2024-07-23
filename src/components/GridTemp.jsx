@@ -2,12 +2,15 @@
 
 import { atom, useAtom } from "jotai";
 // import styled from "styled-components";
-import { gridItemsAtom, gridStyleAtom } from "../../atoms/gridAtoms";
+import { gridItemsAtom, gridStyleAtom } from "../atoms/gridAtoms";
 
 function GridTemp() {
   // originally i was passing gridStyle as a child, but I'm not sure why?
   // Maybe I was thinking state needed to be in parent components, but
   // the point of state mgmt is to pre empt this need, right ?
+  // NEXT STEP !!! Begin connecting to Input changes
+  // Should already be set up for that here, need a new component that handles logic for the form .
+  // Can be based off of GridPropertyForm
 
   const [gridItems, setGridItems] = useAtom(gridItemsAtom);
   const [gridStyle, setGridStyle] = useAtom(gridStyleAtom);
@@ -15,7 +18,8 @@ function GridTemp() {
   const {
     gridTemplateColumns,
     gridTemplateRows,
-    gridGap,
+    columnGap,
+    rowGap,
     justifyItems,
     alignItems,
     gridAutoFlow,
@@ -25,7 +29,8 @@ function GridTemp() {
   const gridStyleObject = {
     gridTemplateColumns: gridTemplateColumns,
     gridTemplateRows: gridTemplateRows,
-    gridGap: gridGap,
+    rowGap: rowGap,
+    columnGap: columnGap,
     justifyItems: justifyItems,
     alignItems: alignItems,
     gridAutoFlow: gridAutoFlow,
