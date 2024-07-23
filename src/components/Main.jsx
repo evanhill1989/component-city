@@ -12,8 +12,8 @@ import TestimonialMain from "./Testimonial/TestimonialMain";
 import ToastMain from "./Toast/ToastMain";
 // import ScrollNav from "./ScrollNav";
 
-import Section from "./#UI/Section";
-import SectionHeader from "./#UI/SectionHeader";
+import Section from "./UI/Section";
+import SectionHeader from "./UI/SectionHeader";
 
 import { gridStyleAtom } from "../atoms/gridAtoms";
 

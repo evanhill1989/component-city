@@ -1,5 +1,5 @@
-import Main from "../components/Main";
+import TempMain from "../components/TempMain";
 
 export default function Home() {
-  return <Main />;
+  return <TempMain />;
 }

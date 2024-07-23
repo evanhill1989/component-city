@@ -40,6 +40,10 @@
   color: #9d174d;
 }
 
+.chartreuse {
+  background-color: #eafcb8;
+}
+
 .badge {
   padding: 2px 12px;
   text-align: center;
@@ -87,4 +91,9 @@
   position: sticky;
 
   display: flex;
+}
+
+.input-container {
+  overflow: scroll;
+  width: 100%;
 }
