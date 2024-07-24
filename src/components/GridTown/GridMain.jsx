@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { atom, useAtom } from "jotai";
 
 import Grid from "./Grid";
-import GridTrackingLines from "./GridTrackingLines";
+import GridTrackingLines from "./OLDGridTrackingLines";
 import GridPropertyForm from "./GridPropertyForm";
 
 import { gridStyleAtom } from "../../atoms/gridAtoms";

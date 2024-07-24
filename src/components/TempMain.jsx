@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Hero from "./UI/Hero";
 import GridTemp from "./GridTemp";
 import GridTempPropertyForm from "./GridTempPropertyForm";
+import GridTrackingLines from "./GridTrackingLines";
 
 import { atom, useAtom } from "jotai";
 
@@ -34,7 +35,7 @@ function TempMain() {
 
       {/*END GRID INPUT SECTION */}
       {/* ACTUAL GRID */}
-      <div className="rendered-grid-container w-full h-[35vh] bg-slate-300 p-3">
+      <div className="rendered-grid-container w-full h-[35vh] relative bg-slate-300 ">
         <GridTemp />
         {/* <div className="rendered-grid border border-pink-500 border-dashed h-full w-full grid grid-cols-3 grid-rows-3">
           <div className="border border-pink-500 border-dashed"></div>
@@ -47,9 +48,11 @@ function TempMain() {
           <div className="rendered-grid border border-pink-500 border-dashed"></div>
           <div className="rendered-grid border border-pink-500 border-dashed"></div>
         </div> */}
+        <GridTrackingLines />
       </div>
       {/*End ACTUAL GRID */}
       {/* GRID TRACKING LINES*/}
+
       {/*END GRID TRACKING LINES*/}
     </main>
   );
